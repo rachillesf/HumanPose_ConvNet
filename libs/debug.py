@@ -14,11 +14,11 @@ def make_joints_dict(joint):
         joints_dict[name] = joint[i]
     return joints_dict
 
-def draw(pos1,pos2):
+def draw(pos1,pos2,color):
     """ draw line if p1 and p2 are valid points"""
 
     if (pos1[2] == 1) and (pos2[2] == 1):
-        plt.plot([pos1[0], pos2[0]], [pos1[1], pos2[1]], color='k', linestyle='-', linewidth=2)
+        plt.plot([pos1[0], pos2[0]], [pos1[1], pos2[1]], color=color, linestyle='-', linewidth=4)
         return
     else:
         return
@@ -27,31 +27,83 @@ def draw_lines(im,joints_dict):
     plt.imshow(im)
 
     #first line r_ankle to r_knee
-    p1 = joints_dict['r_ankle']
-    p2 = joints_dict['r_knee']
-    draw(p1,p2)
+    if  not (joints_dict.get('r_ankle') == None) and   not (joints_dict.get('r_ankle') == None):
+            p1 = joints_dict['r_ankle']
+            p2 = joints_dict['r_knee']
+            draw(p1,p2,'g')
 
-    p1 = joints_dict['r_knee']
-    p2 = joints_dict['r_hip']
-    draw(p1,p2)
+    if  not (joints_dict.get('r_knee') == None) and   not (joints_dict.get('r_hip') == None):
 
-    p1 = joints_dict['r_hip']
-    p2 = joints_dict['l_hip']
-    draw(p1,p2)
+            p1 = joints_dict['r_knee']
+            p2 = joints_dict['r_hip']
+            draw(p1,p2,'r')
 
-    p1 = joints_dict['l_hip']
-    p2 = joints_dict['l_knee']
-    draw(p1,p2)
+    if  not (joints_dict.get('r_hip') == None) and   not (joints_dict.get('l_hip') == None):
 
-    p1 = joints_dict['l_knee']
-    p2 = joints_dict['l_ankle']
-    draw(p1,p2)
+            p1 = joints_dict['r_hip']
+            p2 = joints_dict['l_hip']
+            draw(p1,p2,'m')
 
-    p1 = joints_dict['l_hip']
-    p2 = joints_dict['l_shoulder']
-    draw(p1,p2)
+    if  not (joints_dict.get('l_hip') == None) and   not (joints_dict.get('l_knee') == None):
 
+            p1 = joints_dict['l_hip']
+            p2 = joints_dict['l_knee']
+            draw(p1,p2,'c')
 
+    if  not (joints_dict.get('l_knee') == None) and   not (joints_dict.get('l_ankle') == None):
+            p1 = joints_dict['l_knee']
+            p2 = joints_dict['l_ankle']
+            draw(p1,p2,'b')
+
+    if  not (joints_dict.get('l_hip') == None) and   not (joints_dict.get('l_shoulder') == None):
+
+            p1 = joints_dict['l_hip']
+            p2 = joints_dict['l_shoulder']
+            draw(p1,p2,'m')
+
+    if  not (joints_dict.get('l_shoulder') == None) and   not (joints_dict.get('neck') == None):
+
+            p1 = joints_dict['l_shoulder']
+            p2 = joints_dict['neck']
+            draw(p1,p2,'m')
+
+    if  not (joints_dict.get('l_shoulder') == None) and   not (joints_dict.get('l_elbow') == None):
+            p1 = joints_dict['l_shoulder']
+            p2 = joints_dict['l_elbow']
+            draw(p1,p2,'c')
+    if  not (joints_dict.get('l_elbow') == None) and   not (joints_dict.get('l_elbow') == None):
+
+            p1 = joints_dict['l_elbow']
+            p2 = joints_dict['l_wrist']
+            draw(p1,p2,'b')
+
+    if  not (joints_dict.get('l_shoulder') == None) and   not (joints_dict.get('l_wrist') == None):
+            p1 = joints_dict['r_hip']
+            p2 = joints_dict['r_shoulder']
+            draw(p1,p2,'m')
+
+    if  not (joints_dict.get('neck') == None) and   not (joints_dict.get('r_shoulder') == None):
+
+            p1 = joints_dict['neck']
+            p2 = joints_dict['r_shoulder']
+            draw(p1,p2,'m')
+
+    if  not (joints_dict.get('r_shoulder') == None) and   not (joints_dict.get('r_elbow') == None):
+
+            p1 = joints_dict['r_shoulder']
+            p2 = joints_dict['r_elbow']
+            draw(p1,p2,'r')
+
+    if  not (joints_dict.get('r_elbow') == None) and   not (joints_dict.get('r_wrist') == None):
+            p1 = joints_dict['r_elbow']
+            p2 = joints_dict['r_wrist']
+            draw(p1,p2,'g')
+
+    if  not (joints_dict.get('neck') == None) and   not (joints_dict.get('head') == None):
+
+            p1 = joints_dict['neck']
+            p2 = joints_dict['head']
+            draw(p1,p2,'y')
 
 
     plt.show()

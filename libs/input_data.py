@@ -2,7 +2,7 @@
 import glob
 import os
 import numpy as np
-from skimage import io
+import matplotlib.pyplot as plt
 from GLOBAL import *
 
 
@@ -85,7 +85,7 @@ class Dataset:
         y_batch = []
         for i in idx_list:
             im_name = path + '/' +  self.filename + str(i) + self.filetype
-            im = io.imread(im_name)
+            im = plt.imread(im_name)
             joint = joints[i]
             im_batch.append(im)
             y_batch.append(joint)
