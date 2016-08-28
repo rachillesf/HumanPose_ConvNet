@@ -1,0 +1,4 @@
+1- Fix and test input_data module 
+3- make a libs module 
+2- make data augmentation functions
+

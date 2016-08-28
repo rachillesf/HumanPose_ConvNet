@@ -6,7 +6,7 @@ This dataset contains 12,000 imagens from Leeds Sport Pose and its extension. Th
 
 For using the images download the compressed file from the link bellow and extract it to Datasets/Leeds_Extended
 
-	link:	https://1drv.ms/u/s!AtZrNSTwd90_gpNluq6kFTxqTu_6AA
+	link: https://1drv.ms/u/s!AtZrNSTwd90_gpNnHwexbtKz-Ib9IQ
 
 the locations for train and test sets are in the .npy files
 

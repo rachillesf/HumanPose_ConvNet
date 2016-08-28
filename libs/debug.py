@@ -3,7 +3,8 @@ from GLOBAL import *
 
 d = Dataset()
 
-batch = d.next_batch("Train",10)
-print np.shape(batch)
-io.imshow(batch[0])
+[x_batch,y_batch] = d.next_batch("Train",10)
+
+print y_batch
+io.imshow(x_batch[0])
 io.show()
