@@ -30,16 +30,40 @@ def draw_lines(im,joints_dict):
     p1 = joints_dict['r_ankle']
     p2 = joints_dict['r_knee']
     draw(p1,p2)
+
+    p1 = joints_dict['r_knee']
+    p2 = joints_dict['r_hip']
+    draw(p1,p2)
+
+    p1 = joints_dict['r_hip']
+    p2 = joints_dict['l_hip']
+    draw(p1,p2)
+
+    p1 = joints_dict['l_hip']
+    p2 = joints_dict['l_knee']
+    draw(p1,p2)
+
+    p1 = joints_dict['l_knee']
+    p2 = joints_dict['l_ankle']
+    draw(p1,p2)
+
+    p1 = joints_dict['l_hip']
+    p2 = joints_dict['l_shoulder']
+    draw(p1,p2)
+
+
+
+
     plt.show()
     return
 
 
+while True:
+    [x_batch,y_batch] = d.next_batch("Train",10)
+    y = y_batch[0]
+    dict = make_joints_dict(y)
+    draw_lines(x_batch[0],dict)
 
-[x_batch,y_batch] = d.next_batch("Train",10)
-y = y_batch[0]
-
-dict = make_joints_dict(y)
-draw_lines(x_batch[0],dict)
 
 #io.imshow()
 #io.show()
