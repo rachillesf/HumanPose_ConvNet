@@ -8,6 +8,8 @@ For using the images download the compressed file from the link bellow and extra
 
 	link:	https://1drv.ms/u/s!AtZrNSTwd90_gpNluq6kFTxqTu_6AA
 
+the locations for train and test sets are in the .npy files
+
 
 For more information, please refear to:
 	http://www.comp.leeds.ac.uk/mat4saj/lsp.html
