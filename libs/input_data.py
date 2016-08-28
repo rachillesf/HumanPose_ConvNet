@@ -90,4 +90,4 @@ class Dataset:
             im_batch.append(im)
             y_batch.append(joint)
 
-        return [np.array(im_batch),joint]
+        return [np.array(im_batch),y_batch]
