@@ -1,4 +1,7 @@
 Matlab scripts used for extract single person images from LEEDS and FLIC dataset.
+
+edit "prep_data.m" for suit your needs
+
 The images were croped arround the person based on the largest x and y joint position, then added to a frame in order to make then square shaped, the frame was build using the RGB channels global mean.
 Next, the images were resized to 220x220.
 

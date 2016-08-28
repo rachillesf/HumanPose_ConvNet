@@ -5,4 +5,7 @@ Next, the images were resized to 220x220.
 All the joints localization were adjusted to those changes.
 
 
+The provided scripts still lacks generalization due to the fact that they were build on-the-fly and with a bit of hurry, any contribution is welcome!
+
+
 
