@@ -25,7 +25,7 @@ def random_flip_and_scale(img,coords,range_theta = [-20, 20],range_scale =[0.5, 
 
             #check if the new_image have valid joints annotations
             if not (rot[0] > 0 and rot[1] > 0 and rot[0] < rows and rot[1] < cols):
-                return random_flip(img,coords)
+                return random_flip_and_scale(img,coords)
 
             new_coords.append([rot[0], rot[1], val])
 

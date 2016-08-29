@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 
+
 """""
 this module is meant for displaying the body joints annotations
 the draw_lines function receive am image and a list of anotations were each
