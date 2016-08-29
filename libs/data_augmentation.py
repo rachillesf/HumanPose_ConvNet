@@ -1,58 +1,36 @@
+
 import cv2
 import numpy as np
 
-#original image
-img = cv2.imread('im.jpg')
-#plt.imshow(img)
-p1 = [200,200]
-p2 = [300, 200]
 
-#plt.plot([p1[0], p2[0]], [p1[1], p2[1]], color='k', linestyle='-', linewidth=2)
-#plt.show()
+def random_flip_and_scale(img,coords,range_theta = [-20, 20],range_scale =[0.5, 1.5]):
 
-def random_flip(im,coords):
+    theta = np.random.uniform(low=range_theta[0], high=range_theta[1])
+    scale = np.random.uniform(low=range_scale[0], high=range_scale[1])
 
-    theta = 10
     scale = 1
-    #rotate image
     [rows,cols,_] = np.shape(img)
-    M = cv2.getRotationMatrix2D((cols/2,rows/2),theta,scale)
-    new_img = cv2.warpAffine(img,M,(cols,rows))
+    #rotate image by theta and scale it by scale
+    M = cv2.getRotationMatrix2D((cols/2,rows/2),theta,scale) #rotation matrix
+    new_img = cv2.warpAffine(img,M,(cols,rows)) #apply affine
 
-    plt.imshow(new_img)
-    plt.show
+    new_coords = []
+    for coord in coords:
+        pos = coord[0:2]
+        val = coord[2]
 
-    return
+        if int(val) == 1:
+            #multiply rotation matrix by single coordinate
+            rot = np.dot(M,[pos[0], pos[1], 1])
 
+            #check if the new_image have valid joints annotations
+            if not (rot[0] > 0 and rot[1] > 0 and rot[0] < rows and rot[1] < cols):
+                return random_flip(img,coords)
 
+            new_coords.append([rot[0], rot[1], val])
 
-
-
-
-
-
-
-#rotated image
-[rows,cols,_] = np.shape(img)
-M = cv2.getRotationMatrix2D((cols/2,rows/2),40,1)
-r_img = cv2.warpAffine(img,M,(cols,rows))
-plt.imshow(r_img)
-
-
-M = cv2.getRotationMatrix2D((cols/2,rows/2),40,1)
-print np.shape(M)
-p1 = np.dot(M,[200,200,1])
-p2 = np.dot(M,[300,200,1])
-
-plt.plot([p1[0], p2[0]], [p1[1], p2[1]], color='r', linestyle='-', linewidth=2)
-plt.show()
+        else:
+            new_coords.append(coord)
 
 
-
-
-
-
-
-#io.imshow()
-#io.show()
-#plot([x1, x2], [y1, y2], color='k', linestyle='-', linewidth=2)
+    return [new_img, new_coords]
