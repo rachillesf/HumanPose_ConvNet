@@ -4,6 +4,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from GLOBAL import *
+from data_augmentation import *
 
 
 
@@ -88,6 +89,11 @@ class Dataset:
             im_name = path + '/' +  self.filename + str(i) + self.filetype
             im = plt.imread(im_name)
             joint = joints[i]
+
+            #performs data augmentation pipeline
+            im = random_sv(im)
+            [im, joint] = random_flip_and_scale(im,joint)
+
             im_batch.append(im)
             y_batch.append(joint)
 
