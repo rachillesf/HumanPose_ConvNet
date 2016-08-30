@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 
-def random_flip_and_scale(img,coords,range_theta = [-20, 20],range_scale =[0.5, 1.5]):
+def random_flip_and_scale(img,coords,range_theta = [-20, 20],range_scale =[0.5, 2.0]):
 
     theta = np.random.uniform(low=range_theta[0], high=range_theta[1])
     scale = np.random.uniform(low=range_scale[0], high=range_scale[1])

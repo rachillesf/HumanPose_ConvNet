@@ -9,13 +9,21 @@ one is in shape [ x,y,is_visible ].
 
 
 
-def make_joints_dict(joint):
+def make_joints_dict(joint,dataset = 'FLIC'):
 
-    joint_name = ['r_ankle', 'r_knee', 'r_hip', 'l_hip', 'l_knee','l_ankle','r_wrist',
-                'r_elbow','r_shoulder','l_shoulder','l_elbow','l_wrist','neck','head']
+    if dataset == 'Leeds' or dataset == 'LEEDS' or dataset == 'lsp':
+        joint_name = ['r_ankle', 'r_knee', 'r_hip', 'l_hip', 'l_knee','l_ankle','r_wrist',
+                    'r_elbow','r_shoulder','l_shoulder','l_elbow','l_wrist','neck','head']
+        joint_number = 14
+
+    if dataset == 'FLIC' or dataset == 'flic':
+        joint_name = ['l_shoulder', 'l_elbow','l_wrist','r_shoulder','r_elbow','r_wrist',
+                    'l_hip','r_hip','head','neck']
+        joint_number = 10
+
 
     joints_dict = {}
-    for (i,name) in zip(range(14), joint_name):
+    for (i,name) in zip(range(joint_number), joint_name):
         joints_dict[name] = joint[i]
     return joints_dict
 
@@ -71,28 +79,28 @@ def draw_lines(im,joint):
     if  not (joints_dict.get('l_shoulder') == None) and   not (joints_dict.get('neck') == None):
 
             p1 = joints_dict['l_shoulder']
-            p2 = joints_dict['neck']
+            p2 = joints_dict['r_shoulder']
             draw(p1,p2,'m')
 
     if  not (joints_dict.get('l_shoulder') == None) and   not (joints_dict.get('l_elbow') == None):
             p1 = joints_dict['l_shoulder']
             p2 = joints_dict['l_elbow']
             draw(p1,p2,'c')
-    if  not (joints_dict.get('l_elbow') == None) and   not (joints_dict.get('l_elbow') == None):
+    if  not (joints_dict.get('l_elbow') == None) and   not (joints_dict.get('l_wrist') == None):
 
             p1 = joints_dict['l_elbow']
             p2 = joints_dict['l_wrist']
             draw(p1,p2,'b')
 
-    if  not (joints_dict.get('l_shoulder') == None) and   not (joints_dict.get('l_wrist') == None):
+    if  not (joints_dict.get('r_shoulder') == None) and   not (joints_dict.get('r_hip') == None):
             p1 = joints_dict['r_hip']
             p2 = joints_dict['r_shoulder']
             draw(p1,p2,'m')
 
-    if  not (joints_dict.get('neck') == None) and   not (joints_dict.get('r_shoulder') == None):
+    if  not (joints_dict.get('l_shouder') == None) and   not (joints_dict.get('r_shoulder') == None):
 
-            p1 = joints_dict['neck']
-            p2 = joints_dict['r_shoulder']
+            p1 = joints_dict['r_shouder']
+            p2 = joints_dict['l_shoulder']
             draw(p1,p2,'m')
 
     if  not (joints_dict.get('r_shoulder') == None) and   not (joints_dict.get('r_elbow') == None):
