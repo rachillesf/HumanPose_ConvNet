@@ -6,7 +6,7 @@
 <img src="https://s21.postimg.org/y6fib3053/resultados.png" width="500"/>
 
 ## Convolutional neural net model:
-<img src="https://s21.postimg.org/9rqrhu95z/pose_model.png" width="500"/>
+<img src="https://s21.postimg.org/9rqrhu95z/pose_model.png" width="800" height ="300"/>
 
 
 
