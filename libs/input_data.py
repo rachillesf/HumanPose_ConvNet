@@ -91,10 +91,41 @@ class Dataset:
             joint = joints[i]
 
             #performs data augmentation pipeline
-            im = random_sv(im)
+            #im = random_sv(im)
             [im, joint] = random_flip_and_scale(im,joint)
 
             im_batch.append(im)
             y_batch.append(joint)
 
-        return [np.array(im_batch),y_batch]
+        return [np.array(im_batch,dtype=np.float32),np.array(y_batch)]
+
+
+
+    def get_example(self,set,i):
+        """
+        reads random batch from training or test set
+        inputs:
+            -set: string, "Train" for read from training set,
+            "Test" (or whatever) for test set.
+            -batch_size: amout of images to be read.
+        outputs:
+            im_batch: np array containing the images as
+                     [num_images,rows,collumns,channels]
+        """
+
+        if (set == "train" or set == "Train"):
+            path = self.xtrain_path
+            num_files = self.train_num
+            joints = self.ytrain
+        else:
+            path = self.xtest_path
+            num_files = self.test_num
+            joints = self.ytest
+
+        im_name = path + '/' +  self.filename + str(i) + self.filetype
+        im = plt.imread(im_name)
+        joint = joints[i]
+
+        
+        im = np.reshape(im,[1,220,220,3])
+        return [np.array(im,dtype=np.float32),np.array(joint)]

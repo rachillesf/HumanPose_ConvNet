@@ -4,4 +4,4 @@ some preferences to be used for training
 """
 
 
-data_path = '/home/rachillesf/Desktop/pose_estimation/Datasets/FLIC'
+data_path = '/home/rachillesf/pose_estimation/Datasets/FLIC'
