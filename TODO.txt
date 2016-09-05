@@ -1,2 +1,0 @@
-1- make data augmentation mirror functions
-2- rewrite draw_lines.py because its pretty bad
